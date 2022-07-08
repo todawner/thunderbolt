@@ -1,6 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart';
 import 'theme.dart' as style; //ThemeData 모은 파일
+import 'package:flutter/src/material/icon_button.dart';
 
 void main(){
   runApp(
@@ -27,16 +28,10 @@ class _MyAppState extends State<MyApp> {
       pane: NavigationPane(
         selected:_currentPage,
         onChanged: (i) => setState(()=>_currentPage=i),
-        displayMode: PaneDisplayMode.minimal, //auto 바꿔보기
+        displayMode: PaneDisplayMode.top, //auto 바꿔보기
         items: <NavigationPaneItem>[
           PaneItem(icon: const Icon(FluentIcons.home),
           title:const Text("Home")),
-          PaneItem(icon: const Icon(FluentIcons.new_folder),
-              title:const Text("new")),
-          PaneItem(icon: const Icon(FluentIcons.store_logo16),
-              title:const Text("store")),
-          PaneItem(icon: const Icon(FluentIcons.goto_today),
-              title:const Text("today"))
         ]
       ),
       content: NavigationBody(
@@ -44,9 +39,6 @@ class _MyAppState extends State<MyApp> {
         transitionBuilder: (child,animation)=>EntrancePageTransition(child: child,animation: animation),
         children: const <Widget>[
           HomePage(),
-          NewPage(),
-          StorePage(),
-          TodayPage()
         ],
       ),
     );
@@ -58,7 +50,32 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      mainAxisAlignment:MainAxisAlignment.center  ,
+        child : Container(
+          child: Row(
+            children: [
+              IconButton(
+                icon: Icon(FluentIcons.add),
+                onPressed: () {
+                  print('pressed icon button');
+                },
+              ),
+              IconButton(
+                icon: Icon(FluentIcons.add),
+                onPressed: () {
+                  print('pressed icon button');
+                },
+              ),
+              IconButton(
+                icon: Icon(FluentIcons.add),
+                onPressed: () {
+                  print('pressed icon button');
+                },
+              ),
+            ],
+          ),
+    ););
   }
 }
 class NewPage extends StatelessWidget {
@@ -82,9 +99,6 @@ class TodayPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(padding: 20,);
+    return Container();
   }
 }
-
-
-master page
